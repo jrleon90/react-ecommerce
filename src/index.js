@@ -8,12 +8,12 @@ import {browserHistory,Router,Route} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {Provider} from 'react-redux';
 
-import Layout from './node_modules/containers/layout';
-import Products from './node_modules/containers/products';
+import Layout from './containers/layout';
+import Products from './containers/products';
 //import Categories from './node_modules/containers/categories';
-import Product from './node_modules/containers/product';
+import Product from './containers/product';
 
-import reducers from 'reducers';
+import reducers from './reducers';
 
 const store = createStore(reducers, composeWithDevTools(
    applyMiddleware(thunk)
