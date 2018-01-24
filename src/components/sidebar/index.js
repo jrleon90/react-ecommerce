@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 
 import ShoppingCart from '../shopping-cart';
 import Search from '../search';
+import NestedMenu from '../nested-menu';
 
 class SideBar extends Component{
     render(){
@@ -9,6 +10,7 @@ class SideBar extends Component{
             <div>
                 <ShoppingCart />
                 <Search />
+                <NestedMenu />
             </div>
         );
     }

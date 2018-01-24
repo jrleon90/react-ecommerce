@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import R from 'ramda';
 import {Link} from 'react-router';
 
-import Cart from '../../components/shopping-cart/index';
+import Cart from '../../components/shopping-cart';
+import CategorieMenu from '../../components/cateogorie-menu';
 import {getProductByIdSelector} from '../../selectors';
 import {getProductById,addProductToCart} from '../../actions';
 
@@ -87,6 +88,7 @@ class Product extends Component{
         return(
             <div className='view-container'>
                 <div className='container'>
+                    <CategorieMenu />
                     <div className='row'>
                         <div className='col-md-9'>
                             {product && this.renderContent()}

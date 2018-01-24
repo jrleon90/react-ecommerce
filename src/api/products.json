@@ -263,7 +263,7 @@
   {
     "quantity": 839,
     "image":"/uploads/BORD_LIBERTY_XV.png",
-    "price": "3767",
+    "price": "3,767",
     "available": false,
     "sublevel_id": 12,
     "name": "est",
@@ -272,7 +272,7 @@
   {
     "quantity": 706,
     "image":"/uploads/grapes-1994650_1920.png",
-    "price": "17417",
+    "price": "17,417",
     "available": true,
     "sublevel_id": 4,
     "name": "aliqua",
@@ -281,7 +281,7 @@
   {
     "quantity": 566,
     "image":"/uploads/wine-2323810_1280.png",
-    "price": "5023",
+    "price": "5,023",
     "available": false,
     "sublevel_id": 4,
     "name": "eu",
@@ -290,7 +290,7 @@
   {
     "quantity": 331,
     "image":"/uploads/BORD_LIBERTY_XV.png",
-    "price": "9972",
+    "price": "9,972",
     "available": false,
     "sublevel_id": 7,
     "name": "Lorem",

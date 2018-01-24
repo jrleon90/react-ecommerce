@@ -8,7 +8,6 @@ import {
 } from '../../selectors';
 
 const ShoppingCart = ({totalCartCount,totalPrice}) =>{
-    console.log(totalPrice);
         return(
           <div className='cart'>
               <div className='dropdown'>

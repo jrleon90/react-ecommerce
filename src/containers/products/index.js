@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
-import {getProducts,addProductToCart} from '../../actions';
+import {getProducts,addProductToCart,getCategories} from '../../actions';
 import {getProductsSelector} from '../../selectors';
 
 class Products extends Component {
     componentDidMount() {
-        this.props.getProducts()
+        this.props.getProducts();
+        this.props.getCategories();
     }
 
     renderProduct(product, index){
@@ -47,7 +48,6 @@ class Products extends Component {
     }
     render(){
         const {products} = this.props;
-        console.log(products);
         return (
             <div className='books row'>
                 {products.map((product,index)=> this.renderProduct(product, index))}
@@ -56,13 +56,14 @@ class Products extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    products:getProductsSelector(state)
+const mapStateToProps = (state,ownProps) => ({
+    products:getProductsSelector(state, ownProps)
 });
 
 const mapDispatchToProps = {
     getProducts,
-    addProductToCart
+    addProductToCart,
+    getCategories
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);

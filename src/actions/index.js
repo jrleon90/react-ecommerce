@@ -1,3 +1,4 @@
+import fs from 'fs';
 import {
     GET_PRODUCTS_START,
     GET_PRODUCTS_SUCCESS,
@@ -9,7 +10,10 @@ import {
     GET_PRODUCT_BY_ID_SUCCESS,
     GET_PRODUCT_BY_ID_FAILURE,
     ADD_PRODUCT_TO_CART,
-    SEARCH_PRODUCT
+    SEARCH_PRODUCT,
+    REMOVE_PRODUCT_FROM_CART,
+    ADD_ONE_PRODUCT_TO_CART,
+    CLEAN_CART
 } from '../actionTypes';
 import {
     getProducts as getProductsApi,
@@ -37,11 +41,11 @@ export const getProducts = () => async dispatch =>{
 };
 
 export const getCategories = () => async dispatch =>{
-    dispatch({type: GET_CATEGORIES_START});
-
-    const categories = await getCategoriesApi();
-
     try {
+        dispatch({type: GET_CATEGORIES_START});
+
+        const categories = await getCategoriesApi();
+
         dispatch({
             type: GET_CATEGORIES_SUCCESS,
             payload: categories
@@ -80,9 +84,36 @@ export const addProductToCart = id => dispatch => {
     })
 };
 
+export const addOneProductToCart = id => dispatch => {
+  dispatch({
+     type: ADD_ONE_PRODUCT_TO_CART,
+     payload: id
+  });
+};
+
 export const searchProduct = text => dispatch =>{
     dispatch({
         type: SEARCH_PRODUCT,
         payload: text
     })
+};
+
+export const removeProductFromCart = id => dispatch => {
+    dispatch({
+       type: REMOVE_PRODUCT_FROM_CART,
+       payload: id
+    });
+};
+
+export const cleanCart = () => dispatch => {
+    dispatch({
+        type: CLEAN_CART
+    });
+};
+
+export const cartCheckout = () => (dispatch) => {
+  alert('Venta exitosa');
+    dispatch({
+        type: CLEAN_CART
+    });
 };
