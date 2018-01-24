@@ -4,14 +4,20 @@ export const getProductByIdSelector = (state, id) => R.prop(id, state.Products);
 
 export const getActiveCategoryIdSelector = ownProps => R.path(['params','id'],ownProps);
 
-
 export const getProductsSelector = (state, ownProps) => {
     const activeCategoryId = getActiveCategoryIdSelector(ownProps);
+
     const applyCategory = item => {
-       if(item.sublevel_id == activeCategoryId) {
-           return true
-       }
-       return false;
+        switch(activeCategoryId){
+            case 'price':
+               return R.ascend(R.prop('price'));
+            default:
+                if(item.sublevel_id == activeCategoryId) {
+                    return true;
+                }
+                return false;
+        }
+
 
     };
     const applySearch = item => R.contains

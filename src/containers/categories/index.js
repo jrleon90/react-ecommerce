@@ -9,7 +9,6 @@ import {
 } from "../../selectors";
 
 const Categories = ({categories,}) => {
-    console.log('categories',categories);
     const renderCategoryList = (category,index) => {
       return (
         <Link to={`/categories/${category.id}`}

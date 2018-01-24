@@ -4,7 +4,6 @@ import R from 'ramda';
 import {Link} from 'react-router';
 
 import Cart from '../../components/shopping-cart';
-import CategorieMenu from '../../components/cateogorie-menu';
 import {getProductByIdSelector} from '../../selectors';
 import {getProductById,addProductToCart} from '../../actions';
 
@@ -71,14 +70,14 @@ class Product extends Component{
                 <Link
                     to='/'
                     className='btn btn-info btn-block'>
-                    Back to Store
+                    Regresa a la Tienda
                 </Link>
                 <button
                 type='button'
                 className='btn btn-success btn-block'
                 onClick={() => addProductToCart(product.id)}
                 >
-                    Add to Cart
+                    Comprar
                 </button>
             </div>
         );
@@ -88,7 +87,6 @@ class Product extends Component{
         return(
             <div className='view-container'>
                 <div className='container'>
-                    <CategorieMenu />
                     <div className='row'>
                         <div className='col-md-9'>
                             {product && this.renderContent()}

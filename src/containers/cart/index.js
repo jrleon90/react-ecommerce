@@ -2,13 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import R from 'ramda';
 import {Link} from 'react-router';
-import {Modal,ModalManager,Effect} from 'react-dynamic-modal'
 
 import {
     removeProductFromCart,
-    addOneProductToCart,
     addProductToCart,
     cleanCart,
+    removeOneProduct,
     cartCheckout
 } from '../../actions';
 
@@ -17,12 +16,12 @@ import {
     getTotalCartPriceSelector
 } from '../../selectors';
 
-const Cart = ({products, totalPrice, removeProductFromCart,cleanCart,cartCheckout}) => {
+const Cart = ({products, totalPrice, addProductToCart,removeOneProduct,removeProductFromCart,cleanCart,cartCheckout}) => {
     const isCartEmpty = R.isEmpty(products);
     const renderContent = () => {
         return (
             <div>
-                {isCartEmpty && <div>Your shopping cart is empty</div>}
+                {isCartEmpty && <div>Tu carrito esta vacio</div>}
 
                 <div className='table-responsive'>
                     <table className='table-bordered table-striped table-condensed cf'>
@@ -41,10 +40,12 @@ const Cart = ({products, totalPrice, removeProductFromCart,cleanCart,cartCheckou
                                 </td>
                                 <td>{product.name}</td>
                                 <td>${product.price}</td>
-                                <td><span className='glyphicon glyphicon-minus remove-product-in-cart' />
+                                <td><button className='glyphicon glyphicon-minus remove-product-in-cart'
+                                    onClick={() => removeOneProduct(product.id)}
+                                    />
                                     {product.count}
                                     <button className='glyphicon glyphicon-plus add-product-in-cart'
-                                        onClick={()=>alert(product.id)}
+                                        onClick={() => addProductToCart(product.id)}
                                     />
                                     </td>
                                 <td>
@@ -71,29 +72,13 @@ const Cart = ({products, totalPrice, removeProductFromCart,cleanCart,cartCheckou
         )
     };
 
-  const renderModal = () => {
-      const { onRequestClose } = this.props;
-      return (
-          <Modal
-              onRequestClose={onRequestClose}
-              effect={Effect.Newspaper}>
-              <h1>What you input :</h1>
-              <button onClick={ModalManager.close}>Close Modal</button>
-          </Modal>
-      );
-  };
-
-   const openModal =() => {
-        ModalManager.open(<Cart onRequestClose={() => true}/>);
-    };
-
   const renderSidebar = () => (
     <div>
         <Link
             className='btn btn-info'
             to='/'>
             <span className='glyphicon glyphicon-info-sign' />
-            <span>Continue Shopping</span>
+            <span>Continua Comprando</span>
         </Link>
         {
             R.not(isCartEmpty) &&
@@ -102,7 +87,7 @@ const Cart = ({products, totalPrice, removeProductFromCart,cleanCart,cartCheckou
                         className='btn btn-danger'
                         onClick={() => cleanCart()}>
                          <span className='glyphicon glyphicon-trash' />
-                        Clean Cart
+                        Limpiar el Carro
                     </button>
                     <button
                     className='btn btn-success'
@@ -133,8 +118,8 @@ const Cart = ({products, totalPrice, removeProductFromCart,cleanCart,cartCheckou
 
 const mapDispatchToProps = {
   removeProductFromCart,
-  addOneProductToCart,
   addProductToCart,
+  removeOneProduct,
   cleanCart,
   cartCheckout
 };

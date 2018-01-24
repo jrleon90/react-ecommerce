@@ -1,4 +1,3 @@
-import fs from 'fs';
 import {
     GET_PRODUCTS_START,
     GET_PRODUCTS_SUCCESS,
@@ -12,7 +11,7 @@ import {
     ADD_PRODUCT_TO_CART,
     SEARCH_PRODUCT,
     REMOVE_PRODUCT_FROM_CART,
-    ADD_ONE_PRODUCT_TO_CART,
+    REMOVE_ONE_PRODUCT_FROM_CART,
     CLEAN_CART
 } from '../actionTypes';
 import {
@@ -84,11 +83,11 @@ export const addProductToCart = id => dispatch => {
     })
 };
 
-export const addOneProductToCart = id => dispatch => {
-  dispatch({
-     type: ADD_ONE_PRODUCT_TO_CART,
-     payload: id
-  });
+export const removeOneProduct = id => dispatch => {
+    dispatch({
+       type: REMOVE_ONE_PRODUCT_FROM_CART,
+       payload: id
+    });
 };
 
 export const searchProduct = text => dispatch =>{

@@ -36,10 +36,10 @@ class Products extends Component {
                     <button
                         className='btn btn-primary'
                         onClick={() => addProductToCart(product.id)}>
-                        Buy Now!
+                        Comprar!
                     </button>
                     <Link to={`/products/${product.id}`} className='btn btn-default'>
-                        More Info
+                        Mas Info
                     </Link>
                 </p>
               </div>
